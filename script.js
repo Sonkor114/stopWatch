@@ -1,5 +1,8 @@
 let [seconds, minutes, hours] = [0,0,0]
 let displayTime = document.getElementById("displayTime");
+let stop = document.getElementById("stop");
+let start = document.getElementById("start");
+let reset = document.getElementById("reset");
 let timer = null;
 
 function stopwatch() {
@@ -29,9 +32,15 @@ function watchStart() {
 function watchStop() {
     clearInterval(timer);
 }
+
 function watchReset() {
     clearInterval(timer);
     [seconds, minutes, hours] = [0,0,0];
     displayTime.innerHTML = "00:00:00";
     watchStart()
 }
+
+
+start.addEventListener("click", watchStart)
+stop.addEventListener("click", watchStop)
+reset.addEventListener("click", watchReset)
